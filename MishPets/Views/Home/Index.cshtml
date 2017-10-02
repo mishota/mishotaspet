@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!--Диалоговое-->
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog">
+
+        <!--View модального-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+                <h1 class="text-primary">Внимание</h1>
+            </div>
+            <div class="modal-body">
+                <h3 class="text-success">Сайт находится на стадии разработки, все питомцы являются вымышленными.
+                Ни одно животное при создании сайта не пострадало.</h3>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<!--Тело главной-->
+<!-- Carousel
+        ================================================== -->
+<div id="myCarousel" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="~/Images/karusel1.jpg" width="1150" class="img-responsive">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Нужен друг - собака для вас</h1>
+                    <p></p>
+                    <p>
+                        <a class="btn btn-lg btn-primary" href="/PetsCatalog?kind=2&male=Все&age=Все">Подробнее</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Images/karusel2.jpg" width="1150" class="img-responsive">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Самые ласковые коты и кошки</h1>
+                    <p>Ищете котенка или готовы стать домом для взрослой кошки, мы рады и предлагаем выбрать вашего питомца.</p>
+                    <p><a class="btn btn-large btn-primary" href="/PetsCatalog?kind=1&male=Все&age=Все">Подробнее</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Images/karusel3.jpg" width="1150" class="img-responsive">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Готовы помочь животным, оказав помощь в виде передержки?</h1>
+                    <p>Будем рады Вашей готовности стать временным домом для бездомных животных</p>
+                    <p><a class="btn btn-large btn-primary" href="/OverexposureContracts/ListOverex">Подробнее</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="icon-next"></span>
+    </a>
+</div>
+<!-- /.carousel -->
+<div class="row">
+    <div class="col-md-4">
+        <img src="~/Images/squire1.jpg" alt="..." class="img-circle">
+
+    </div>
+    <div class="col-md-4">
+        <img src="~/Images/squire3.jpg" alt="..." class="img-circle">
+
+    </div>
+    <div class="col-md-4">
+        <img src="~/Images/squire2.jpg" alt="..." class="img-circle">
+
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $('#modDialog').modal('show');
+
+        //$(function () {
+        //    $.ajaxSetup({ cache: false });
+        //   $(".compItem").click(function (e) {
+
+        //        e.preventDefault();
+        //        $.get(this.href, function (data) {
+        //            $('#dialogContent').html(data);
+        //            $('#modDialog').modal('show');
+        //        });
+        //    });
+        //})
+
+
+
+    //    window.open('http://www.google.com', 'myWindow',
+    //'toolbar=0, height=500, width=800, resizable=1, scrollbars=1');
+    //    window.focus();
+
+    </script>
+
+
+    
+}
+
+        
+   

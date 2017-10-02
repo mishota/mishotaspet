@@ -1,0 +1,58 @@
+﻿@model MishPets.Models.OverexposureContract
+@{
+    ViewBag.Title = "Питомцы на карте";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+
+
+<style>
+    .stationInfo {
+        height: 150px;
+        width: 250px;
+    }
+</style>
+
+<div id="canvas" style="height: 600px; width:600px;">
+
+</div>
+
+<!--Устанавливаем секцию scripts, которая затем будет рендериться на мастер-странице -->
+@section scripts {
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        GetMap();
+    });
+
+    // Функция загрузки
+    function GetMap() {
+
+        google.maps.visualRefresh = true;
+        // установка основных координат
+        var Moscow = new google.maps.LatLng(55.752622, 37.617567);
+
+        // Установка общих параметров отображения карты, как масштаб, центральная точка и тип карты
+        var mapOptions = {
+            zoom: 15,
+            center: Moscow,
+            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+        };
+
+        // Встраиваем гугл-карты в элемент на странице и получаем объект карты
+        var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+
+        // Настраиваем красный маркер, который будет использоваться для центральной точки
+        var myLatlng = new google.maps.LatLng(55.752622, 37.617567);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Станции метро'
+        });
+    }
+        </script>
+    }
+
+

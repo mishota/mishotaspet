@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MishPets.Models.Invoice>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OverexposureContracts.OverexposureContractId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfInvoice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SumOfInvoice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OverexposureContracts.OverexposureContractId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfInvoice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SumOfInvoice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InvoiceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InvoiceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InvoiceId })
+        </td>
+    </tr>
+}
+
+</table>

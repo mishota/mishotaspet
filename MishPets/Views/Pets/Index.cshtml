@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MishPets.Models.Pet>
+
+@{
+    ViewBag.Title = "Каталог питомцев";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Index</h2>*@
+
+
+
+<p>
+    @Html.ActionLink("Добавить питомца", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KindOfPet.Kind)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionOfPet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlagMale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusOfPet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePet)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KindOfPet.Kind)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NickName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionOfPet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlagMale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusOfPet)
+        </td>
+        
+        
+
+        <td>
+            @if (item.ImagePet != null)
+            {
+                <img class="img-thumbnail" width="75" height="75" src="@Url.Action("GetImage", "Pets", new { item.PetId })" />
+            }
+        </td>
+
+
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { PetId=item.PetId }) |
+            @Html.ActionLink("Подробнее", "Details", new { PetId = item.PetId }) |
+            @Html.ActionLink("Удалить", "Delete", new { PetId = item.PetId })
+        </td>
+    </tr>
+}
+
+</table>

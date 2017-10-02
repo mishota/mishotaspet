@@ -1,0 +1,247 @@
+﻿@model MishPets.Models.PetsListViewModel
+@*@model PagedList.IPagedList<MishPets.Models.PetsListViewModel>*@
+
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Каталог питомцев";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@*<h2>Каталог питомцев</h2>*@
+
+
+@*<div id="wrapper">*@
+
+    <form method="get">
+        <div class="form-inline">
+            <label class="control-label">Вид питомца: </label>
+            @Html.DropDownList("kind", Model.Kinds as SelectList,
+                    htmlAttributes: new { @class = "form-control" })
+
+            <label class="control-label">Пол питомца: </label>
+            @Html.DropDownList("male", Model.Males as SelectList,
+                htmlAttributes: new { @class = "form-control" })
+
+            <label class="control-label">Возраст питомца: </label>
+            @Html.DropDownList("age", Model.Ages as SelectList,
+                htmlAttributes: new { @class = "form-control" })
+
+            <input type="submit" value="Фильтр" class="btn btn-default" />
+        </div>
+    </form>
+<a>@Html.ActionLink("Перейти на карту", "Index", "Map")</a>
+
+
+    <!-- Кнопки, объединенные в группу с помощью класса .btn-group -->
+    @*<div class="btn-group">
+
+        <!-- Кнопка с выпадающим меню -->
+        <div class="btn-group">
+            <button type="button" data-toggle="dropdown" class="btn btn-info dropdown-toggle">
+                Выбрать вид питомца
+                <span class="caret"></span>
+            </button>
+            <!-- Выпадающее меню -->
+            <ul class="dropdown-menu">
+                <!-- Пункты меню -->
+
+
+
+                <li><a href="/PetsCatalog/Кот">Кот</a></li>
+                <li><a href="#">Собака</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Отменить выбор</a></li>
+            </ul>
+        </div>
+
+        <!-- Кнопка с выпадающим меню -->
+        <div class="btn-group">
+            <button type="button" data-toggle="dropdown" class="btn btn-info dropdown-toggle">
+                Выбрать пол питомца
+                <span class="caret"></span>
+            </button>
+            <!-- Выпадающее меню -->
+            <ul class="dropdown-menu">
+                <!-- Пункты меню -->
+                <li><a href="#">Мальчики</a></li>
+                <li><a href="#">Девочки</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Отменить выбор</a></li>
+            </ul>
+        </div>
+
+        <!-- Кнопка с выпадающим меню -->
+        <div class="btn-group">
+            <button type="button" data-toggle="dropdown" class="btn btn-info dropdown-toggle">
+                Возраст
+                <span class="caret"></span>
+            </button>
+            <!-- Выпадающее меню -->
+            <ul class="dropdown-menu">
+                <!-- Пункты меню -->
+                <li><a href="#">До года</a></li>
+                <li><a href="#">Старше года</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Отменить выбор</a></li>
+            </ul>
+        </div>
+
+        <button type="button" class="btn btn-warning">Просмотр на карте</button>
+        <a>@Html.ActionLink("Перейти на карту", "Index", "Map")</a>
+        @*<a>@Html.ActionLink("Перейти на карту1", "Map1", "PetsCatalog")</a>
+            <a>@Html.ActionLink("Перейти на каталог", "Index", "PetsCatalog")</a>
+            <a href="/PetsCatalog/Map"> Карта</a>
+            <a href="PetsCatalog/Map1"> Карта1</a>*@
+    @*</div>*@
+@*</div>*@
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
+
+
+
+
+
+<div class="row">
+    @foreach (var item in Model.Pets)
+    {
+        <!--  Изображение -->
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail" style="height:470px;">
+                @*<img src="..." alt="...">*@
+                @if (item.ImagePet != null)
+                {
+                    <img class="img-rounded" width="250" height="250" src="@Url.Action("GetImage", "Pets", new {item.PetId })" />
+                }
+                <div class="caption">
+                    <h3 class="text-center"><i>@Html.DisplayFor(modelItem => item.NickName)</i></h3>
+                    <p class="text-center">@Html.DisplayNameFor(model => model.Pets.First().KindOfPet.Kind) - @Html.DisplayFor(modelItem => item.KindOfPet.Kind)</p>
+                    <p class="text-center">@Html.DisplayNameFor(model => model.Pets.First().Age) - @Html.DisplayFor(modelItem => item.Age)</p>
+                    @if (item.FlagMale == 0)
+                    {
+                        <p class="text-center">Девочка</p>
+                    }
+                    else
+                    {
+                        <p class="text-center">Мальчик</p>
+                    }
+
+                    @*@Html.ActionLink("Подробнее", "Details", new { id = item.PetId }, new { @class = "btn btn-success btn-lg btn-block" })*@
+                    @*@Html.ActionLink("Подробнее", "Details", new { id = item.PetId }, new { @class = "petItem" } )*@
+                    <p class="text-center">@Html.ActionLink("Подробнее", "Details", new { id = item.PetId }, new { id = "petItem1", @class = "petItem" })</p>
+</div>
+            </div>
+        </div>
+    }
+
+
+</div>
+@*Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pets.First().KindOfPet.Kind)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pets.First().NickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pets.First().Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pets.First().DescriptionOfPet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pets.First().FlagMale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pets.First().StatusOfPet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pets.First().ImagePet)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Pets)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KindOfPet.Kind)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NickName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionOfPet)
+            </td>
+            <td>
+                @if (item.FlagMale == 0)
+                {
+                    <p>Девочка</p>
+                }
+                else
+                {
+                    <p>Мальчик</p>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusOfPet)
+            </td>
+            <td>
+                @if (item.ImagePet != null)
+                {
+                    <img class="img-thumbnail" width="75" height="75" src="@Url.Action("GetImage", "Pets", new { item.PetId })" />
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Подробнее", "Details", new { id = item.PetId }, new { @class = "petItem" })
+        </tr>
+    }
+
+</table>*@
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".petItem").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+
+    </script>
+}
+
+<style>
+    #petItem1 {
+        border: 4px solid;
+        padding: 4px;
+        text-decoration: none;
+        background-color: lightskyblue;
+        text-align: center;
+        vertical-align:bottom;
+        width:inherit;
+        font-size: large;
+    }
+</style>

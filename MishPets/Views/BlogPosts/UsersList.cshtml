@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MishPets.Models.BlogPost>
+
+@{
+    ViewBag.Title = "Доска объявлений";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Index</h2>*@
+
+<p>
+    @Html.ActionLink("Добавить свое объявление", "Create")
+    @Html.ActionLink("Назад к доске объявлений", "List")
+</p>
+<p>
+    @if (Model.Count() == 0)
+    { <h2>У вас нет объявлений</h2>}
+</p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DatetimeBlogPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TextOfPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePost)
+            </th>
+           
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatetimeBlogPost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TextOfPost)
+                </td>
+               
+                <td>
+                    @if (item.ImagePost != null)
+                    {
+                        <img class="img-thumbnail" width="75" height="75" src="@Url.Action("GetImage", "BlogPosts", new {item.BlogPostId })" />
+                    }
+                </td>
+
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { BlogPostId = item.BlogPostId }) |
+                    @Html.ActionLink("Подробнее", "Details", new { BlogPostId = item.BlogPostId }) |
+                    @Html.ActionLink("Удалить", "Delete", new { BlogPostId = item.BlogPostId })
+                </td>
+            </tr>
+        }
+
+    </table>
+

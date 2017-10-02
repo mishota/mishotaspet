@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MishPets.Models.OverexposureContract>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Список договоров передержки</h2>
+
+<p>
+    @Html.ActionLink("Создать", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pet.NickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOverexpStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOverexpEnd)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdUserForOverexp)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet.NickName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOverexpStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOverexpEnd)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdUserForOverexp)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.OverexposureContractId }) |
+            @Html.ActionLink("Подробнее", "Details", new { id=item.OverexposureContractId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.OverexposureContractId })
+        </td>
+    </tr>
+}
+
+</table>

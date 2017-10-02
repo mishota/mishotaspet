@@ -1,0 +1,76 @@
+﻿@model MishPets.Models.Pet
+<div class="modal-content">
+    <!-- Данные о питомце-->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Данные о питомце</h4>
+    </div>
+    <!-- Основное содержимое модального окна -->
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.KindOfPet.Kind)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KindOfPet.Kind)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NickName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NickName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DescriptionOfPet)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DescriptionOfPet)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FlagMale)
+            </dt>
+
+            <dd>
+                @*@Html.DisplayFor(model => model.FlagMale)*@
+                @if (Model.FlagMale == 0)
+                {
+                    <p>Девочка</p>
+                }
+                else
+                {
+                    <p>Мальчик</p>
+                }
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImagePet)
+            </dt>
+
+            <dd>
+                @if (Model.ImagePet != null)
+                {
+                    <img class="img-thumbnail" width="200" height="200" src="@Url.Action("GetImage", "Pets", new { Model.PetId })" />
+                }
+            </dd>
+
+        </dl>
+    </div>
+    <!-- Футер модального окна -->
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <!--<button type="button" class="btn btn-primary">Сохранить изменения</button>-->
+    </div>
+</div>

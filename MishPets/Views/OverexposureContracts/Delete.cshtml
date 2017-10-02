@@ -1,0 +1,49 @@
+﻿@model MishPets.Models.OverexposureContract
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>OverexposureContract</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pet.NickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pet.NickName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOverexpStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOverexpStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOverexpEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOverexpEnd)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

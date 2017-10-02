@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MishPets", "MishPets\MishPets.csproj", "{05BF1733-C827-4118-8897-D21475B93356}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MishPets.Tests", "MishPets.Tests\MishPets.Tests.csproj", "{2730B044-DA78-45E5-9E3E-10A8B2D2DABD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MishDomain", "MishDomain\MishDomain.csproj", "{89B04872-F046-4FBD-8BB3-1339A0228BD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05BF1733-C827-4118-8897-D21475B93356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05BF1733-C827-4118-8897-D21475B93356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05BF1733-C827-4118-8897-D21475B93356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05BF1733-C827-4118-8897-D21475B93356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2730B044-DA78-45E5-9E3E-10A8B2D2DABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2730B044-DA78-45E5-9E3E-10A8B2D2DABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2730B044-DA78-45E5-9E3E-10A8B2D2DABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2730B044-DA78-45E5-9E3E-10A8B2D2DABD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89B04872-F046-4FBD-8BB3-1339A0228BD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B04872-F046-4FBD-8BB3-1339A0228BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B04872-F046-4FBD-8BB3-1339A0228BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B04872-F046-4FBD-8BB3-1339A0228BD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

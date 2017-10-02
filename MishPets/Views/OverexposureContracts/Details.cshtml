@@ -1,0 +1,43 @@
+﻿@model MishPets.Models.OverexposureContract
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OverexposureContract</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pet.NickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pet.NickName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOverexpStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOverexpStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOverexpEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOverexpEnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OverexposureContractId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

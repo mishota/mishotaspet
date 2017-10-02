@@ -1,0 +1,61 @@
+﻿@model MishPets.Models.Expense_Invoice
+
+@{
+    ViewBag.Title = "DeleteExInv";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Удаление спецификации</h2>
+
+<h3>Уверены ли что хотите удалить спецификацию?</h3>
+<div>
+    @*<h4>Expense_Invoice</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Expense.TypeOfExpense)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expense.TypeOfExpense)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Invoice.InvoiceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invoice.InvoiceId)
+        </dd>
+                
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SumExpense)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SumExpense)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="DeleteExpInv" class="btn btn-default" /> |
+            @Html.ActionLink("Назад в спецификацию", "ListExpInv", new { InvoiceId = Model.InvoiceId })
+        </div>
+    }
+
+    
+</div>
+

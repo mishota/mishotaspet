@@ -1,0 +1,117 @@
+﻿@model List<MishPets.Models.MapModel>
+@{
+    ViewBag.Title = "Питомцы на карте";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://maps.google.com/maps/api/js?&key=AIzaSyC_Ok_CtARF8l_8HSkdG4t0HhLtOomYD5Y" type="text/javascript"></script>
+
+<style>
+    .stationInfo {
+        height: 150px;
+        width: 250px;
+    }
+</style>
+
+<div id="canvas" style="height: 600px; width:1150px;">
+
+</div>
+
+<!--Устанавливаем секцию scripts, которая затем будет рендериться на мастер-странице -->
+@section scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            GetMap();
+        });
+
+        // Функция загрузки
+        function GetMap() {
+
+            google.maps.visualRefresh = true;
+            // установка основных координат
+            var Minsk = new google.maps.LatLng(53.902257, 27.561831);
+
+            // Установка общих параметров отображения карты, как масштаб, центральная точка и тип карты
+            var mapOptions = {
+                zoom: 15,
+                center: Minsk,
+                mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+            };
+
+            // Встраиваем гугл-карты в элемент на странице и получаем объект карты
+            var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+
+            // Настраиваем красный маркер, который будет использоваться для центральной точки
+            var myLatlng = new google.maps.LatLng(53.902257, 27.561831);
+
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: 'Минск'
+            });
+
+
+
+            //************
+            // Берем для маркера иконку с сайта google
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+
+            // Получаем данные
+            $.getJSON('@Url.Action("GetData", "Map")', function (data) {
+                // Проходим по всем данным и устанавливаем для них маркеры
+                $.each(data, function (i, item) {
+
+var marker = new google.maps.Marker({
+                        'position': new google.maps.LatLng(item.GeoLong, item.GeoLat),
+                        'map': map,
+
+'title': item.NickName,
+
+});
+
+
+                    var image = {
+                        url: ('@Url.Action("GetImage", "Pets")?PetId=' + item.PetId),
+                        size: new google.maps.Size(100, 100),
+                        origin: new google.maps.Point(35,25),
+
+                    };
+                     marker.setIcon(image)
+                    // Для каждого объекта добавляем доп. информацию, выводимую в отдельном окне
+                    var infowindow = new google.maps.InfoWindow({
+
+                        content: "<div class='petInfo'><h2>Питомец " + item.NickName + "</h2> <h2>Телефон " + item.Phone + "</h2></div>  @*<a @Html.Action("Details", "PetsCatalog", new { id = 3 }) > Подробнее</a>*@"
+                    });
+
+                    // обработчик нажатия на маркер объекта
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.open(map, marker);
+                    });
+                })
+            });
+        }
+
+
+
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".petItem").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+    </script>
+}
+
+
+
+   
+
+        
+

@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNet.Identity.EntityFramework
+@model IEnumerable<MishPets.Models.MenuItem>
+<nav class="navbar navbar-default">
+    <ul class="nav nav-tabs">
+        @{
+            var items = Model;
+            foreach (var item in items)
+            {
+                <li class="@item.Active">
+                    @Html.RouteLink(item.Name, new
+               {
+                   controller = item.Controller,
+                   action = item.Action
+               })
+                </li>
+            }
+        }
+    </ul>
+</nav>

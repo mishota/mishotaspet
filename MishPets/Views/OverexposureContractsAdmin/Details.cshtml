@@ -1,0 +1,51 @@
+﻿@model MishPets.Models.OverexposureContract
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Подробно о договоре передержки</h2>
+
+<div>
+    @*<h4>OverexposureContract</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pet.NickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pet.NickName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOverexpStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOverexpStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOverexpEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOverexpEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdUserForOverexp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUserForOverexp)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.OverexposureContractId }) |
+    @Html.ActionLink("Назад к списку договоров", "Index")
+</p>

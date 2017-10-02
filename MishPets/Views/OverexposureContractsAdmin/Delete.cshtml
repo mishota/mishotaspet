@@ -1,0 +1,57 @@
+﻿@model MishPets.Models.OverexposureContract
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Delete</h2>*@
+
+<h3>Уверены в удалении договора передержки?</h3>
+<div>
+    @*<h4>OverexposureContract</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pet.NickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pet.NickName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOverexpStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOverexpStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOverexpEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOverexpEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdUserForOverexp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUserForOverexp)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку договоров", "Index")
+        </div>
+    }
+</div>

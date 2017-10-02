@@ -1,0 +1,41 @@
+﻿@model MishPets.Models.EditModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Редактировать данные профиля</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div>
+        <p>Address: @Html.EditorFor(model => model.Address)</p>
+    </div>
+    <div>
+        <p>Phone: @Html.EditorFor(model => model.Phone)</p>
+     </div>
+    <div>
+        <p>FlagОverexposure:0 или 1 (для передержки)
+        @Html.EditorFor(model => model.FlagОverexposure)
+        @Html.ValidationMessageFor(model => model.FlagОverexposure, "", new { @class = "text-danger" })
+        </p>
+    </div>
+    <div>
+        <div>
+            <input type="submit" value="Сохранить" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+            
+
+
+
+

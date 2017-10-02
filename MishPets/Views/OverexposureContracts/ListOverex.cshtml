@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MishPets.Models.OverexposureContract>
+
+@{
+    ViewBag.Title = "Передержка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ваши питомцы на передержке</h2>
+
+@*<p>
+    @Html.ActionLink("Добавить новый договор", "Create")
+</p>*@
+<p>
+    @if (Model.Count() == 0)
+    { <h2>У вас нет договоров передержки</h2>}
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pet.NickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOverexpStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOverexpEnd)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pet.NickName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOverexpStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOverexpEnd)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OverexposureContractId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OverexposureContractId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OverexposureContractId })
+            </td>*@
+            <td>
+                @*<a>@Html.ActionLink("Выставить счет", "CreateExpInv", "Expense_Invoices", new { id = item.OverexposureContractId }))</a>*@
+                @*<a>@Html.ActionLink("Выставить счет", "CreateExpInv", "Expense_Invoices")</a>*@
+                <a>@Html.ActionLink("Ваши счета", "ListInvoice",  new { item.OverexposureContractId })</a>
+                @*<a>@Html.ActionLink("Выставить новый счет", "CreateExpInv", new { item.OverexposureContractId })</a>*@
+            </td>
+            
+        </tr>
+    }
+
+</table>
+
+

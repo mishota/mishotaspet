@@ -1,0 +1,88 @@
+﻿@*@model IEnumerable<MishPets.Models.BlogPost>*@
+@model PagedList.IPagedList<MishPets.Models.BlogPost>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Доска объявлений";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Добавить свое объявление", "Create")
+    @Html.ActionLink("Личный кабинет", "UsersList")
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <!--  Изображение -->
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail" style="height:450px;">
+                @*<img src="..." alt="...">*@
+                @if (item.ImagePost != null)
+                {
+                    <img class="img-circle" width="250" height="250" src="@Url.Action("GetImage", "BlogPosts", new {item.BlogPostId })"  />
+                }
+                <div class="caption">
+                    <h4 class="text-center">@Html.DisplayFor(modelItem => item.DatetimeBlogPost.Date)</h4>
+                    <p class="text-justify">@Html.DisplayFor(modelItem => item.TextOfPost)</p>
+                    @*<p>@Html.DisplayFor(modelItem => item.ApplicationUser.Phone)</p>*@
+
+                    @Html.ActionLink("Подробнее", "Details", new { BlogPostId = item.BlogPostId }, new { @class = "btn btn-success btn-lg btn-block" })
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }))
+
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DatetimeBlogPost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextOfPost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePost)
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatetimeBlogPost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TextOfPost)
+            </td>
+           
+            @Html.HiddenFor(modelItem => item.ImagePost)
+            @Html.HiddenFor(modelItem => item.ImagePostMimeType)
+
+            <td>
+                @if (item.ImagePost != null)
+                {
+                    <img class="img-thumbnail" width="75" height="75" src="@Url.Action("GetImage", "BlogPosts", new {item.BlogPostId })" />
+                }
+            </td>
+
+            <td>
+ 
+                @Html.ActionLink("Подробнее", "Details", new { BlogPostId = item.BlogPostId }) 
+                
+            </td>
+        </tr>
+    }
+
+</table>*@

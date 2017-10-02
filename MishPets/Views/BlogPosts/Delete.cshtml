@@ -1,0 +1,53 @@
+﻿@model MishPets.Models.BlogPost
+
+@{
+    ViewBag.Title = "Удаление объявления";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Delete</h2>*@
+
+<h3>Уверены, что хотите удалить объявление?</h3>
+<div>
+    @*<h4>BlogPost</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DatetimeBlogPost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatetimeBlogPost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TextOfPost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextOfPost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePost)
+        </dt>
+
+        <dd>
+            @if (Model.ImagePost != null)
+            {
+                <img class="img-thumbnail" width="75" height="75" src="@Url.Action("GetImage", "BlogPosts", new {Model.BlogPostId })" />
+            }
+        </dd>
+
+       
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к доске объявлений", "List")
+        </div>
+    }
+</div>

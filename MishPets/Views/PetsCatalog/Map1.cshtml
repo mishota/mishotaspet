@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Карта";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+<!-- Кнопка с выпадающим меню -->
+<div class="btn-group">
+    <button type="button" data-toggle="dropdown" class="btn btn-info dropdown-toggle">
+        Выбрать вид питомца
+        <span class="caret"></span>
+    </button>
+    <!-- Выпадающее меню -->
+    <ul class="dropdown-menu">
+        <!-- Пункты меню -->
+
+
+
+        <li><a href="/PetsCatalog/Кот">Кот</a></li>
+        <li><a href="#">Собака</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Отменить выбор</a></li>
+    </ul>
+</div>
+
+<!-- Кнопка с выпадающим меню -->
+<div class="btn-group">
+    <button type="button" data-toggle="dropdown" class="btn btn-info dropdown-toggle">
+        Выбрать пол питомца
+        <span class="caret"></span>
+    </button>
+    <!-- Выпадающее меню -->
+    <ul class="dropdown-menu">
+        <!-- Пункты меню -->
+        <li><a href="#">Мальчики</a></li>
+        <li><a href="#">Девочки</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Отменить выбор</a></li>
+    </ul>
+</div>

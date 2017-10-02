@@ -1,0 +1,46 @@
+﻿@model MishPets.Models.BlogPost
+
+@{
+    ViewBag.Title = "Подробная информация";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Детали объявления</h2>
+
+<div>
+    @*<h4>Объявление</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DatetimeBlogPost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatetimeBlogPost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TextOfPost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextOfPost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePost)
+        </dt>
+        <dd>
+            @if (Model.ImagePost != null)
+            {
+                <img class="img-thumbnail" width="500" height="500" src="@Url.Action("GetImage", "BlogPosts", new {Model.BlogPostId })" />
+            }
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+   
+    @Html.ActionLink("Назад в общий список объявлений", "List")
+</p>

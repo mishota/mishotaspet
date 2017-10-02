@@ -1,0 +1,51 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*-----------------*/
+
+/* 1 Способ - Придать адаптивность всем изображениям. При этом данные изображения будут себя ввести как строчно-блочные элементы (inline-block) */
+img {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
+
+/*соц. сети*/  
+#social {     float: right;     margin-left: 20px;     width: 130px; }  
+.social-icon {     width: 30px;     height: 30px;        display: inline-block;     margin-right: 10px; }  
+.twitter {     background: url(../Images/twitter.png) no-repeat; } 
+ .facebook {     background: url(../Images/facebook.png) no-repeat; }  
+.google {     background: url(../Images/google.png) no-repeat; } 
+
+
+ #petItem1 
+{
+ border: 4px outset;
+ padding: 2px;
+ text-decoration: none;
+ background-color:lightskyblue;
+}
+
+

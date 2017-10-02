@@ -1,0 +1,59 @@
+﻿@model MishPets.Models.Expense_Invoice
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Expense_Invoice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Expense.TypeOfExpense)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expense.TypeOfExpense)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Invoice.InvoiceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invoice.InvoiceId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OverexposureContractId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OverexposureContractId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SumExpense)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SumExpense)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Expense_InvoiceId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
